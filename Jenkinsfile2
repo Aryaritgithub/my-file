@@ -1,0 +1,43 @@
+pipeline{
+    agent any
+    parameters {
+  string defaultValue: 'arya', name: 'person'
+}
+    stages{
+        stage("A"){
+            steps{
+                echo 'hello world'
+            }
+          
+        }  stage("parameters"){
+            steps{
+                echo "person"
+            }
+          
+        }
+          stage("C"){
+            steps{
+                echo "========executing C========"
+            }
+          
+        }
+          stage("D"){
+            steps{
+                echo "========executing D========"
+            }
+          
+        }
+
+    }
+    post{
+        always{
+            echo "========always========"
+        }
+        success{
+            echo "========pipeline executed successfully ========"
+        }
+        failure{
+            echo "========pipeline execution failed========"
+        }
+    }
+}
